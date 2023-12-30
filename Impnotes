@@ -1,0 +1,80 @@
+why we need express js ?
+-> 
+Express.js is a tool for building web applications using JavaScript and Node.js.
+ It simplifies tasks like handling web requests, routing users to different pages, and adding features like authentication.
+ It's lightweight, flexible, and widely used, making it a popular choice for creating web apps.
+
+ Install Express 
+ -> npm i express 
+
+ install Nodemon 
+-> npm install -g nodemon 
+
+To run nodemon 
+->nodemon .\index.js(file name)
+
+⭐if one do  not have to write nodemon inde.js then 
+1.Go to package.json 
+2.inside the script clear all 
+3.inside script write 
+   "start":"node index.js",
+   "dev":"nodemon index.js"
+4.in order to run write npm run dev instead of nodemon index.js
+
+Difference between Nodejs and Express js?
+-> in express js in order to show something we have create multiple if statements but in express js we can create different function or servers
+
+import express from "express";
+
+const app = express();
+
+-> app.get("/",(req,res)=>{
+    res.json({
+        success:true,
+        products:[],
+    });
+})
+-> app.get("/about",(req,res)=>{
+    res.send("hello about");
+})
+
+
+app.listen(5000,()=>{
+    console.log("server is working")
+})
+
+⭐ if we want to send the custom message on error we can send simply by writing
+res.status(400).send("error hai bhai");
+
+⭐if we want to send file like index.html on server
+1.import path from path
+2.app.get("/file",(req,res)=>{
+    //kis folder k andar kam chal rha
+    const pathlocation = path.resolve();
+    
+    console.log(path.join(pathlocation,"./index.html")) ;
+
+    res.sendFile(path.join(pathlocation,"./index.html"));
+})
+
+What is EJS used for?
+
+->EJS is a flexible and widely used template engine that is well-suited for building dynamic web applications and generating HTML content in Node. js applications.
+
+->can share templated pieces with other web pages (such as common headers/footers).
+
+-> For example, if you want to display a user's name dynamically on a webpage using Express and Node.js, you can use EJS. Instead of writing static HTML, you write a template in EJS where you insert a placeholder for the user's name. When the page loads, you replace this placeholder with the actual user's name using JavaScript. This way, you can create dynamic content without rewriting the entire page, making your web application more flexible and efficient.
+
+To install EJS(Embedded JavaScript Template)
+-> npm i ejs
+
+⭐ always put ejs file inside the views folder
+
+⭐ in order to view file content using ejs
+1.app.set("view engine","ejs");
+2.inside server function write res.render("file name");
+
+⭐ in form the action tells after submiting it will render to which file
+for rending into specific file one should use post request
+
+
